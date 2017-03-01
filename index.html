@@ -28,10 +28,32 @@
       <!-- <div class="6u 12u$(medium)">-->
         <ul class="actions vertical">
            <li><a href="#one" class="button fit scrolly">나?</a></li>
-           <li><a href="#two" class="button fit scrolly">Weekly 프로젝트s</a></li>
+           <li>
+           <div class="12u$">
+	    <div class="select-wrapper">
+		<select name="demo-category" id="demo-category" onchange="myFunction()">
+		   <option value="">- Category -</option>
+	           <option value="http://www.google.com">Drone</option>
+		   <option value="1">Shipping</option>
+		   <option value="1">Administration</option>
+                   <option value="1">Human Resources</option>
+                </select>
+           </div>
+          </div>
+	  </li>
+	
+	
            <li><a href="#three" class="button fit scrolly">email</a></li>    
         </ul>
 </div>	
+<script type="text/javascript">
+function myFunction() {
+   var frm = document.demo-category;
+   if(frm.value != "") {
+		window.open(frm.link.value,'_self');
+	}
+}
+</script>
 
 
 
