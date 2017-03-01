@@ -32,7 +32,7 @@
 		  
 <div class="select-wrapper">
 	<form name="link_form">
-		<select name="demo-category" id="demo-category" onchange="myFunction()">
+		<select name="demo-category" id="link" onchange="myFunction()">
 			<option value="">- Weekly 프로젝트s -</option>
 			<option value="#one">네이버</option>
 			<option value="http://www.daum.net">다음</option>
@@ -67,8 +67,8 @@
 function myFunction() {
 	var frm = document.link_form;
 	
-	if(frm.demo-category.value != "") {
-		window.open(frm.demo-category.value,'_self');
+	if(frm.link.value != "") {
+		window.open(frm.link.value,'_self');
 	}
 }
 </script>
