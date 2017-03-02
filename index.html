@@ -145,7 +145,7 @@ function myFunction() {
    <h2>Scru-fe BlueTooth(Sangu-딸)</h2>
 </header>
 	
-<h4>제작기</h4>
+<h4>개요</h4>
 <p><span class="image left"><img src="images/scru-fe-02.jpg" alt=""/></span> 씽기버스<sup>thingiverse</sup>에 
 공된 Scru-Fe 꼬마자동차 <sup> 마치 2008년 픽사가 제작한 컴퓨터 그래픽 SF 애니메이션 영화 주인공 월E를 닮았다.</sup>
 를 가져와, 전체 모양을 훼손하지 않는 범위에서 몸체를 수정하여 3D 프린팅하였고, 스마트폰 제어를 위해 블루투스 모듈<sup>JMOD-BT-1</sup>을 추가 장착하였다.
@@ -160,6 +160,81 @@ VCC(+)와 GND(-)는 아두이노 5V 전원에, RXD와 TXD핀은 A0, A1에 가상
 <p><span class="image left"><img src="images/bluetooth serial con.png" alt=""/></span>스마트폰과의 통신 앱은 Bluetooth serial controller 
 <sup>(구글 Play 스토어에서 검색)</sup>인데, 사진에서 보는 것처럼 매우 직관적이다. 물론 세팅하는 과정이 별도로 필요하다. 구글링이 필요하다. </p>
 <hr />
+
+<h4>주요 코드</h4>
+<pre><code>
+
+
+#include "Servo.h"
+#include "SoftwareSerial.h"
+
+SoftwareSerial mySerial(A0, A1); // tX, rX
+
+#define motorBdirection 13
+#define motorAdirection 12
+#define motorBpower 11
+#define motorApower 10
+#define servo 9
+#define Buzzer 4
+
+void setup() {
+  Serial.begin(9600); 
+  mySerial.begin(115200);
+
+  pinMode(servo, OUTPUT);
+  pinMode(motorAdirection, OUTPUT);
+  pinMode(motorBdirection, OUTPUT);
+  pinMode(motorApower, OUTPUT);
+  pinMode(motorBpower, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, INPUT);
+  pinMode(Buzzer, OUTPUT);
+
+  //Turn Head to Center
+  analogWrite(servo, 90);
+
+  //소리
+  buzz();
+}
+
+int speedy = 180;
+int distance1 = 0;
+int distance2 = 0;
+int distance3 = 0;
+char data;
+
+void loop() {
+
+  if (mySerial.available()) {
+    data = mySerial.read();
+    Serial.write(data);   
+  }  
+
+  if (data == '2') {//전진
+    go(speedy+20, 100);
+  } 
+  else if (data == '6') {//우회전
+    right(speedy-20, 450);
+  } 
+  else if (data == '8') {//후진
+    back(speedy+20, 500); 
+  } 
+  else if (data == '4') {//좌회전
+    left(speedy-20, 450);
+  } 
+  else if (data == '5') {//정지
+    halt(1);
+  } 
+  else if (data == '9') {//auto moving . . .
+    auto_driving();
+  }
+  else {
+    //autonomous moving
+    auto_driving();
+  }
+} 
+
+</code></pre>
 	
 </div>
 </section>
