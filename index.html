@@ -149,11 +149,16 @@ function myFunction() {
 VCC(+)와 GND(-)는 아두이노 5V 전원에, RXD와 TXD핀은 A0, A1에 가상 시리얼 SoftwareSerial로 연결했다. </p>
 	
 		
-<p><span class="image left"><img src="images/bluetooth serial con.png" alt=""/></span>스마트폰과의 통신 앱은 Bluetooth serial controller 
-<sup>(구글 Play 스토어에서 검색)</sup>인데, 사진에서 보는 것처럼 매우 직관적이다. 물론 세팅하는 과정이 별도로 필요하다. 
-Preference에서, 먼저 Visibilty를 선택하여 없앨 버튼을 언체크하고, Name에서는 버튼 이름을 바꾼다. 
-Command에서는 각각의 버튼에 명령어를 할당한다. 여기서는 그것을 숫자로 나타냈다. 아래 소스 참고!
-다른 기능도 많지만 여기서는 기본적인 것 세 가지만 수정했다.</p>
+<p><span class="image left"><img src="images/bluetooth serial con.png" alt=""/></span>
+스마트폰과 통신하는 앱은 Bluetooth serial controller<sup>구글 Play 스토어에서 검색</sup>로서, 
+사진에서 보는 것처럼 매우 직관적이다. 물론 세팅하는 과정이 별도로 필요하다. 
+<br />
+Preference로 들어간다. 
+먼저 Visibilty를 선택하여 없앨 버튼을 언체크하고, Name에서는 버튼 이름을 바꾼다.
+Command에서는 각각의 버튼에 명령어를 할당하는데 여기서는 그것을 숫자로 정했다. 
+예를 들어, 2번 버튼의 Name을 <strong>전진<strong>으로 정하고 2를 명령값으로 할당한다. 아래 소스를 참고하길. 
+
+다양한 기능들이 더 있지만 여기서는 기본적인 것 세 가지만 사용했다. </p>
 </section>
 	
 <br />	
