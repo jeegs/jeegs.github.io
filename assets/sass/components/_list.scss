@@ -1,9 +1,5 @@
-@import '../libs/vars';
-@import '../libs/functions';
-@import '../libs/mixins';
-
 ///
-/// Fractal by HTML5 UP
+/// Editorial by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
@@ -34,8 +30,7 @@
 			padding-left: 0;
 
 			li {
-				border-top-style: solid;
-				border-top-width: _size(border-width);
+				border-top: solid 1px _palette(border);
 				padding: 0.5em 0;
 
 				&:first-child {
@@ -52,104 +47,59 @@
 
 			li {
 				display: inline-block;
-				padding: 0 1.5em 0 0;
+				padding: 0 1em 0 0;
 
 				&:last-child {
-					padding-right: 0 !important;
+					padding-right: 0;
 				}
 
 				.icon {
+					color: inherit;
+
 					&:before {
-						font-size: 1.75rem;
+						font-size: 1.25em;
 					}
 				}
 			}
+		}
 
-			&.major {
-				li {
-					padding: 0 2.5em 0 0;
+		&.contact {
+			list-style: none;
+			padding: 0;
 
-					.icon {
-						&:before {
-							font-size: 2.75rem;
-						}
+			li {
+				@include icon;
+				border-top: solid 1px _palette(border);
+				margin: 1.5em 0 0 0;
+				padding: 1.5em 0 0 3em;
+				position: relative;
+
+				&:before {
+					color: _palette(accent);
+					display: inline-block;
+					font-size: 1.5em;
+					height: 1.125em;
+					left: 0;
+					line-height: 1.125em;
+					position: absolute;
+					text-align: center;
+					top: (1.5em / 1.5);
+					width: 1.5em;
+				}
+
+				&:first-child {
+					border-top: 0;
+					margin-top: 0;
+					padding-top: 0;
+
+					&:before {
+						top: 0;
 					}
 				}
 
-				// Small.
-					@include breakpoint(small) {
-						li {
-							padding: 0 1.25em 0 0;
-
-							.icon {
-								&:before {
-									font-size: 1.75rem;
-								}
-							}
-						}
-					}
-
-			}
-
-			&.labeled {
-				li {
-					margin: 1em 0;
-					padding: 0 2em 0 0;
-
-					.icon {
-						&:before {
-							vertical-align: middle;
-							font-size: 2.25rem;
-							margin-right: 0.5em;
-						}
-
-						.label {
-							display: inline-block;
-							vertical-align: middle;
-							color: _palette(fg);
-						}
-					}
+				a {
+					color: inherit;
 				}
-
-				// Small.
-					@include breakpoint(small) {
-
-						// Portrait.
-							@include orientation(portrait) {
-								text-align: left;
-								margin-right: auto;
-								margin-left: auto;
-								display: inline-block;
-								white-space: nowrap;
-
-								li {
-									display: block;
-									padding: 0;
-									margin: 1.5em 0 0 0;
-
-									.icon {
-										&:before {
-											width: 1.5em;
-											display: block;
-											float: left;
-											margin-right: 0;
-										}
-
-										&:after {
-											content: '';
-											display: block;
-											clear: both;
-										}
-									}
-
-									&:first-child {
-										margin-top: 0;
-									}
-								}
-							}
-
-					}
-
 			}
 		}
 
@@ -224,49 +174,69 @@
 					}
 				}
 			}
+		}
 
-			// XSmall.
-				@include breakpoint(xsmall) {
+		&.pagination {
+			cursor: default;
+			list-style: none;
+			padding-left: 0;
 
-					// Portrait.
-						@include orientation(portrait) {
-							margin: 0 0 _size(element-margin) 0;
+			li {
+				display: inline-block;
+				padding-left: 0;
+				vertical-align: middle;
 
-							li {
-								padding: (_size(element-margin) * 0.5) 0 0 0;
-								display: block;
-								text-align: center;
-								width: 100%;
+				> .page {
+					@include vendor('transition', (
+						'background-color #{_duration(transition)} ease-in-out',
+						'color #{_duration(transition)} ease-in-out'
+					));
+					border-bottom: 0;
+					border-radius: _size(border-radius);
+					display: inline-block;
+					font-size: 0.8em;
+					font-weight: _font(weight-bold);
+					height: 2em;
+					line-height: 2em;
+					margin: 0 0.125em;
+					min-width: 2em;
+					padding: 0 0.5em;
+					text-align: center;
 
-								&:first-child {
-									padding-top: 0;
-								}
+					&.active {
+						background-color: _palette(accent);
+						color: _palette(bg) !important;
 
-								> * {
-									width: 100%;
-									margin: 0 !important;
-
-									&.icon {
-										&:before {
-											margin-left: -2em;
-										}
-									}
-								}
-							}
-
-							&.small {
-								li {
-									padding: (_size(element-margin) * 0.25) 0 0 0;
-
-									&:first-child {
-										padding-top: 0;
-									}
-								}
-							}
+						&:hover {
+							background-color: lighten(_palette(accent), 3);
 						}
 
+						&:active {
+							background-color: darken(_palette(accent), 3);
+						}
+					}
 				}
 
+				&:first-child {
+					padding-right: 0.75em;
+				}
+
+				&:last-child {
+					padding-left: 0.75em;
+				}
+			}
+
+			@include breakpoint(xsmall) {
+				li {
+					&:nth-child(n+2):nth-last-child(n+2) {
+						display: none;
+					}
+
+					&:first-child {
+						padding-right: 0;
+					}
+				}
+			}
 		}
 	}
 
@@ -283,15 +253,3 @@
 			margin-left: _size(element-margin);
 		}
 	}
-
-	@mixin color-list($p: null) {
-		ul {
-			&.alt {
-				> li {
-					border-top-color: _palette($p, border);
-				}
-			}
-		}
-	}
-
-	@include color-list;

@@ -4,56 +4,81 @@
 @import 'libs/skel';
 
 /*
-	Fractal by HTML5 UP
+	Editorial by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-/* Spotlight */
+/* Features */
 
-	.spotlight {
-		.image {
-			width: 25%;
-			display: inline-block;
-			vertical-align: middle;
-		}
-
-		.content {
-			width: 65%;
-			display: inline-block;
-			vertical-align: middle;
-		}
-
+	.features {
 		&:after {
+			clear: both;
 			content: '';
 			display: block;
-			clear: both;
 		}
 
-		&:nth-child(2n) {
-			.image {
-				margin: 0 (_size(element-margin) * 1.5) 0 0;
+		article {
+			float: left;
+
+			&:after {
+				clear: both;
+				content: '';
+				display: block;
 			}
 
-			.content {
-				text-align: left;
+			.icon {
+				float: left;
 			}
 		}
 	}
 
-/* Header */
+/* Posts */
 
-	#header {
-		height: auto;
-		text-align: center;
+	.posts {
+		&:after {
+			clear: both;
+			content: '';
+			display: block;
+		}
+
+		article {
+			float: left;
+		}
+	}
+
+/* Main */
+
+	#main {
+		padding-left: _size(sidebar-width-alt);
+	}
+
+/* Sidebar */
+
+	#sidebar {
+		position: absolute;
+		top: 0;
+		left: 0;
+		min-height: 100%;
+		width: _size(sidebar-width-alt);
+	}
+
+/* Banner */
+
+	#banner {
+		&:after {
+			clear: both;
+			content: '';
+			display: block;
+		}
 
 		.content {
-			display: inline-block;
-			vertical-align: middle;
+			float: left;
+			padding-right: (_size(element-margin) * 2);
 		}
 
 		.image {
-			display: inline-block;
-			vertical-align: middle;
+			float: left;
+			margin-left: 0;
 		}
 	}
